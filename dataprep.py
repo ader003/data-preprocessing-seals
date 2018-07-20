@@ -15,7 +15,7 @@ def main():
         data = pd.read_csv(contents[i], sep=",", header=0, names=['number', 'behaviour_event', 'value', 'type_event', 'fps', 'time', 'depth', 'x', 'y', 'z', 'behaviour', 'type', 'location', 'place', 'raw', 'date', 'doe'], low_memory=False)
 
         # drop columns
-        drop_cols = ['behaviour_event', 'type_event', 'fps', 'time', 'location', 'raw', 'date', 'doe']
+        drop_cols = ['number', 'behaviour_event', 'value', 'type_event', 'fps', 'time', 'location', 'raw', 'date', 'doe']
         data.drop(drop_cols, axis=1, inplace=True)
             
         # replace values in 'behaviour', 'type', and 'place'
@@ -25,7 +25,7 @@ def main():
         print("Processed " + str(filename[i]))
 
         # save as .csv -- will save in one directory above
-        data.to_csv(filename[i], sep=",", header=['number', 'value', 'depth', 'x', 'y', 'z', 'behaviour', 'type', 'place'])
+        data.to_csv(filename[i], sep=",", header=['depth', 'x', 'y', 'z', 'behaviour', 'type', 'place'])
 
 
 if __name__ == "__main__":
